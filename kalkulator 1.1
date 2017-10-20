@@ -1,0 +1,95 @@
+<?php
+if(isset($_GET['oblicz']))
+{
+$liczba1=$_GET['pole1'];
+$liczba2=$_GET['pole2'];
+$dzialanie=$_GET['dzialanie'];
+if($dzialanie=="dod")
+$wynik = $liczba1 + $liczba2;
+else if($dzialanie=="ode")
+$wynik = $liczba1 - $liczba2;
+else if($dzialanie=="mno")
+$wynik = $liczba1*$liczba2;
+else if($dzialanie=="dzi")
+$wynik = $liczba1/$liczba2;
+}
+?>
+<head>
+<title>Kalkulator</title>
+</head>
+<FORM action="">
+<body>
+
+Kalkulator<br>
+------------------------------------------------------------------------------------------<br>
+Prosty<br>
+</body>
+<input name="pole1" value="<?php echo isset($_GET['pole1']) ? $_GET['pole1'] : ''; ?>">
+<select name="dzialanie">
+<option value="dod">Dodawanie</optia>
+<option value="ode">Odejmowanie</optia>
+<option value="mno">Mnozenie</optia>
+<option value="dzi">Dzielenie</optia>
+</select>
+<input name="pole2">
+<input type="submit" value ="oblicz" name="oblicz"><br />
+<span style="color:red;">
+<?php
+echo $wynik;
+?>
+</span>
+</FORM>
+
+
+
+
+
+<FORM action="">
+<body>
+<p>
+------------------------------------------------------------------------------------------<br>
+Zaawansowany<br>
+</body>
+<input name="pole3">
+<select name="czynnosc">
+<option value="cos">Cosinus</optia>
+<option value="sin">Sinus</optia>
+<option value="Tan">Tangens</optia>
+<option value="Bin">Binarne na dziesietne</optia>
+<option value="DziesieBIN">Dziesietne na binarne</optia>
+<option value="DziesieSze">Dziesietne na szesnastkowe</optia>
+<option value="SzesnaDzie">Szesnastkowe na dziesietne</optia>
+<option value="Stop">Stopnie na radiany</optia>
+<option value="Rad">Radiany na stopnie</optia>
+
+</select>
+<input type="submit" value ="policz" name="policz">
+</FORM>
+
+<?php
+if(isset($_GET['policz']))
+{
+$liczba1=$_GET['pole3'];
+$czynnosc=$_GET['czynnosc'];
+if($czynnosc=="cos")
+	echo cos($liczba1*PI()/180);
+else if($czynnosc=="sin")
+	echo sin($liczba1*PI()/180);
+else if($czynnosc=="Tan")
+	echo tan($liczba1*PI()/180);
+else if($czynnosc=="Bin")
+	echo bindec($liczba1);
+else if($czynnosc=="DziesieBIN")
+	echo decbin($liczba1);
+else if($czynnosc=="DziesieSze")
+	echo dechex($liczba1);
+else if($czynnosc=="SzesnaDzie")
+	echo hexdec($liczba1);
+else if($czynnosc=="Stop")
+	echo deg2rad($liczba1);
+else if($czynnosc=="Rad")
+	echo rad2deg($liczba1);
+
+}
+?>
+
